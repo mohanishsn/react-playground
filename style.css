@@ -1,3 +1,111 @@
-h1 {
-  color: red;
+*,
+html,
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+.header {
+  background-color: #eee;
+  box-shadow: 0 0 20px 2px #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.logo,
+.user-icon {
+  height: 5rem;
+}
+
+.nav-items {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-items .nav-item {
+  padding: 1rem;
+  font-size: 1.25rem;
+}
+
+.search-filter-section {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-search {
+  margin-left: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+.body {
+  padding: 2rem;
+  background-color: #bfd0e8;
+}
+
+.res-list {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.res-card {
+  background-color: #fff;
+  border: 1px solid transparent;
+  box-shadow: 3px 3px 20px 5px #e3e3e3;
+  height: 20rem;
+  width: 15rem;
+  margin: 0.5rem 1rem;
+}
+
+.shimmer-container {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  background-color: #eee;
+  height: 20rem;
+  width: 15rem;
+  margin: 0.5rem 1rem;
+}
+
+.res-card:hover {
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.res-logo-sec img {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+
+.res-info-sec {
+  padding: 0.5rem;
+}
+
+.res-name {
+  font-size: 14px;
+}
+
+.user-card {
+  padding: 12px;
+  border: 1px solid #d7d7d7;
 }
