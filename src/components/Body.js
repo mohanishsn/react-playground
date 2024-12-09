@@ -1,23 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 filterTopRatedRestaurants = () => {};
 
 const Body = () => {
+	const { userName, setUserName } = useContext(UserContext);
 	// local state variable - powerful variable
 	let [resList, setResList] = useState([]);
 	let [filteredResList, setFilteredResList] = useState([]);
-
 	let [searchText, setSearchText] = useState("");
-
-	const onlineStatus = useOnlineStatus()
-	console.log('onlineStatus==>', onlineStatus);
+	const onlineStatus = useOnlineStatus();
 
 	if (!onlineStatus) {
-		return <div>Looks like you are offline. Please check your internet connection</div>
+		return (
+			<div>
+				Looks like you are offline. Please check your internet connection
+			</div>
+		);
 	}
 
 	useEffect(() => {
@@ -30,19 +33,19 @@ const Body = () => {
 		);
 		const jsonData = await data.json();
 		setResList(
-			jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+			jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
 				?.restaurants
 		);
 		setFilteredResList(
-			jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+			jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
 				?.restaurants
 		);
 	};
 
-	return resList.length === 0 ? (
+	return resList?.length === 0 ? (
 		<Shimmer />
 	) : (
-		<div className="body">
+		<div className="p-3">
 			<div className="search-filter-section">
 				<div className="search-section">
 					<input
@@ -52,26 +55,33 @@ const Body = () => {
 						placeholder="Enter restaurant name"
 						onChange={(e) => {
 							setSearchText(e.target.value);
-							console.log("searchtext1==>", searchText);
 						}}
 					/>
 					<button
-						className="btn search-btn"
+						className="bg-blue-600 text-white px-4 py-2 rounded-lg ml-3"
 						onClick={() => {
-							console.log("searchText==>", searchText);
-							console.log("resList==>", resList);
 							let filteredList = resList.filter((resItem) => {
 								return resItem.info.name
 									.toLowerCase()
 									.includes(searchText.toLowerCase());
 							});
 
-							console.log("filteredList==>", filteredList);
 							setFilteredResList(filteredList);
 						}}
 					>
 						Search
 					</button>
+				</div>
+
+				<div className="search-section">
+					<label>User name: </label>
+					<input
+						type="text"
+						value={userName}
+						className="input-search"
+						placeholder="Enter user name"
+						onChange={(e) => setUserName(e.target.value)}
+					/>
 				</div>
 				<div className="filter">
 					<button
@@ -87,7 +97,7 @@ const Body = () => {
 					</button>
 				</div>
 			</div>
-			<div className="res-list">
+			<div className="grid grid-cols-6 gap-5">
 				{filteredResList.map((resObj) => (
 					<Link key={resObj.info.id} to={"/restaurant/" + resObj.info.id}>
 						<RestaurantCard resData={resObj} />

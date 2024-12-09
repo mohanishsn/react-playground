@@ -17,18 +17,17 @@ class UserClass extends React.Component {
     // console.log('child componentDidMount');
     const data = await fetch("https://api.github.com/users/mohanishsn")
     const jsonData = await data.json();
-    console.log('data==>', jsonData);
     this.setState({
       userInfo: jsonData
     })
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate called');
+    // console.log('componentDidUpdate called');
   }
 
   componentWillUnmount() {
-    console.log('componentWillUnmount called');
+    // console.log('componentWillUnmount called');
   }
 
 	render() {

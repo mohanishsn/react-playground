@@ -81,3 +81,32 @@ A js function given by react with multiple utilities to it.
 - componentDidMount() - a lifecycle method, generally used to make API calls, because react renders the component first so it doesn't have to wait for the api to return data.
 - refer react lifecycle diagram
   https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+# 6 - Higher order component
+Takes a component, processes it and returns the same component with some modifications
+
+# 7 - Controlled and uncontrolled components
+
+# 8 - react dev tools extension, 
+
+# 9 - Lifting state up
+
+# 10 - Props drilling (the problem)
+
+# 11 - React context ((one of)the solution)
+
+# 12 - Redux (Redux-toolkit)
+- install redux/toolkit
+- install react-redux
+- create our store
+- connect app with store
+- create slice (cart slice)
+- modify cart (dispatch action)
+- read from cart (subscribe selector)
+
+# 13 - Types of testing (Developer)
+  1. unit testing
+   - Testing your component (one unit of your application) in isolation
+
+  2. integration testing
+  3. e2e testing

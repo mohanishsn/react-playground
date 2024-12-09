@@ -15,7 +15,6 @@ const useRestaurant = (resId) => {
 		console.log(jsonRes);
 	};
 
-	console.log("resInfo==>", resInfo);
 	return resInfo;
 };
 
